@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${id == null ? 'Novo Fornecedor' : 'Editar Fornecedor'}"></title>
+</head>
+<body>
+<h1 th:text="${id == null ? 'Novo Fornecedor' : 'Editar Fornecedor'}"></h1>
+<form th:action="${id == null ? '/fornecedores' : '/fornecedores/atualizar/' + id}" method="post">
+    <label>Nome:
+        <input type="text" name="name" th:value="${dataProvider.name}" required>
+    </label><br>
+    <label>Telefone:
+        <input type="text" name="phone" th:value="${dataProvider.phone}" required>
+    </label><br>
+    <label>Email:
+        <input type="email" name="email" th:value="${dataProvider.email}" required>
+    </label><br>
+    <button type="submit">Salvar</button>
+</form>
+<a href="/fornecedores/listar">Voltar</a>
+</body>
+</html>
