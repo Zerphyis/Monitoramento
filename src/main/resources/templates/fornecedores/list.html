@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Fornecedores</title>
+</head>
+<body>
+<h1>Fornecedores</h1>
+<a href="/fornecedores/novo">Adicionar Novo</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Ações</th>
+    </tr>
+    <tr th:each="provider : ${providers}">
+        <td th:text="${provider.id}"></td>
+        <td th:text="${provider.name}"></td>
+        <td th:text="${provider.phone}"></td>
+        <td th:text="${provider.email}"></td>
+        <td>
+            <a th:href="@{/fornecedores/edit/{id}(id=${provider.id})}">Editar</a> |
+            <a th:href="@{/fornecedores/deletar/{id}(id=${provider.id})}" onclick="return confirm('Tem certeza?')">Excluir</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
