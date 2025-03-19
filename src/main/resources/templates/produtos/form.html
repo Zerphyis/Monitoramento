@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Adicionar Produto</title>
+</head>
+<body>
+<h1>Adicionar Novo Produto</h1>
+<form th:action="@{/produtos}" method="post">
+    <label>Nome: <input type="text" name="name" th:value="${dataProductEntry.name}" required></label><br>
+    <label>Preço: <input type="number" step="0.01" name="price" th:value="${dataProductEntry.price}" required></label><br>
+    <label>Quantidade: <input type="number" name="quantity" th:value="${dataProductEntry.quantity}" required></label><br>
+    <label>Categoria:
+        <select name="categoryProduct" th:value="${dataProductEntry.categoryProduct}">
+            <option value="ELETRONICOS">Eletrônicos</option>
+            <option value="ROUPAS">Roupas</option>
+            <option value="ALIMENTOS">Alimentos</option>
+            <option value="LIMPEZA">Limpeza</option>
+            <option value="OUTROS">Outros</option>
+        </select>
+    </label><br>
+    <label>Fornecedor: <input type="number" name="providerId" th:value="${dataProductEntry.providerId}" required></label><br>
+    <label>Alerta de Estoque: <input type="number" name="stockAlert" th:value="${dataProductEntry.stockAlert}"></label><br>
+    <button type="submit">Salvar</button>
+</form>
+<a href="/produtos">Voltar para a Lista</a>
+</body>
+</html>
