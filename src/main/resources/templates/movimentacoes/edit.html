@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Editar Movimentação</h1>
-<form action="/movimentacoes/editar/{id}" method="post">
+<form th:action="@{/movimentacoes/editar/{id}(id=${movimentacao.id})}" method="post">
   <label for="productId">Produto:</label>
   <select name="productId" id="productId">
     <option th:each="produto : ${produtos}"
