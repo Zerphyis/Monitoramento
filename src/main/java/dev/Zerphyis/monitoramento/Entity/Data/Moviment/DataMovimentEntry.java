@@ -1,8 +1,6 @@
-package dev.Zerphyis.monitoramento.Entity.Data;
+package dev.Zerphyis.monitoramento.Entity.Data.Moviment;
 
 import dev.Zerphyis.monitoramento.Entity.MovimentStock.TypeMoviment;
-import dev.Zerphyis.monitoramento.Entity.Product.Product;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

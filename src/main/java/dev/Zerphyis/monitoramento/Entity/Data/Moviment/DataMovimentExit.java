@@ -1,4 +1,4 @@
-package dev.Zerphyis.monitoramento.Entity.Data;
+package dev.Zerphyis.monitoramento.Entity.Data.Moviment;
 
 import dev.Zerphyis.monitoramento.Entity.MovimentStock.TypeMoviment;
 

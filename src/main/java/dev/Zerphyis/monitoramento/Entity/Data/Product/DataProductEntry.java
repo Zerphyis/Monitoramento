@@ -1,4 +1,4 @@
-package dev.Zerphyis.monitoramento.Entity.Data;
+package dev.Zerphyis.monitoramento.Entity.Data.Product;
 
 import dev.Zerphyis.monitoramento.Entity.Product.CategoryProduct;
 
