@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Editar Movimentação</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Editar Movimentação</h1>
+<form action="/movimentacoes/editar/{id}" method="post">
+  <label for="productId">Produto:</label>
+  <select name="productId" id="productId">
+    <option th:each="produto : ${produtos}"
+            th:value="${produto.id}"
+            th:text="${produto.name}">
+    </option>
+  </select>
+
+  <label for="typeMoviment">Tipo de Movimentação:</label>
+  <select name="typeMoviment" id="typeMoviment">
+    <option value="ENTRADA" th:selected="${movimentacao.typeMoviment == 'ENTRADA'}">Entrada</option>
+    <option value="SAIDA" th:selected="${movimentacao.typeMoviment == 'SAIDA'}">Saída</option>
+  </select>
+
+  <label for="amounts">Quantidade:</label>
+  <input type="number" name="amounts" id="amounts"
+         th:value="${movimentacao.amounts}" required>
+
+  <button type="submit">Atualizar</button>
+</form>
+<a href="/movimentacoes">Voltar</a>
+</body>
+</html>
