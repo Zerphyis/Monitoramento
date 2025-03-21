@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulários de Estoque</title>
+</head>
+<body>
+<h3>Verificar Alerta de Estoque</h3>
+<form action="/notificacoes/alerta-estoque" method="get">
+  <label for="movimentIdEntrada">ID do Movimento (Entrada):</label>
+  <input type="number" id="movimentIdEntrada" name="movimentId" required>
+  <button type="submit">Enviar Alerta</button>
+</form>
+
+<h3>Verificar Reabastecimento de Estoque</h3>
+<form action="/notificacoes/alerta-abastecimento" method="get">
+  <label for="movimentIdSaida">ID do Movimento (Saída):</label>
+  <input type="number" id="movimentIdSaida" name="movimentId" required>
+  <button type="submit">Enviar Notificação de Reabastecimento</button>
+</form>
+</body>
+</html>
