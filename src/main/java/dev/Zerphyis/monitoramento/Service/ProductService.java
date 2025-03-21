@@ -1,7 +1,7 @@
 package dev.Zerphyis.monitoramento.Service;
 
-import dev.Zerphyis.monitoramento.Entity.Data.DataProductEntry;
-import dev.Zerphyis.monitoramento.Entity.Data.DataProductExit;
+import dev.Zerphyis.monitoramento.Entity.Data.Product.DataProductEntry;
+import dev.Zerphyis.monitoramento.Entity.Data.Product.DataProductExit;
 import dev.Zerphyis.monitoramento.Entity.Product.Product;
 import dev.Zerphyis.monitoramento.Entity.Provider.Provider;
 import dev.Zerphyis.monitoramento.Repository.ProductRepository;
