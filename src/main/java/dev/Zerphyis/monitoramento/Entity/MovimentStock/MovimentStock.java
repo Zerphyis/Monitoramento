@@ -14,7 +14,9 @@ public class MovimentStock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+
     private Product product;
+    @Enumerated(EnumType.STRING)
     private TypeMoviment typeMoviment;
     @NotNull
     private Integer amounts;
@@ -61,6 +63,14 @@ public class MovimentStock {
 
     public LocalDate getDate() {
         return date;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setDate(LocalDate date) {

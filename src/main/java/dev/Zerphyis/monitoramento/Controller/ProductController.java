@@ -1,6 +1,6 @@
 package dev.Zerphyis.monitoramento.Controller;
 
-import dev.Zerphyis.monitoramento.Entity.Data.DataProductEntry;
+import dev.Zerphyis.monitoramento.Entity.Data.Product.DataProductEntry;
 import dev.Zerphyis.monitoramento.Entity.Product.Product;
 import dev.Zerphyis.monitoramento.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
