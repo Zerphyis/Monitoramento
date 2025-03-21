@@ -32,21 +32,17 @@ public class ProductController {
 
     @PostMapping
     public String saveProduct(@ModelAttribute DataProductEntry dataProductEntry) {
-        // Verifica se o ID do produto está presente para decidir entre criar ou atualizar
         if (dataProductEntry.name() == null || dataProductEntry.name().isEmpty()) {
-            return "redirect:/produtos"; // Adicionar uma validação para o nome se necessário
+            return "redirect:/produtos";
         }
 
         if (dataProductEntry.providerId() == null || dataProductEntry.providerId() == 0L) {
-            // Se não tiver providerId, significa que é uma criação
             productService.createProduct(dataProductEntry);
         } else {
-            // Verifica se o ID do produto já existe para fazer atualização
             Optional<Product> existingProduct = productService.getProductById(dataProductEntry.providerId());
             if (existingProduct.isPresent()) {
                 productService.updateProduct(existingProduct.get().getId(), dataProductEntry);
             } else {
-                // Se não encontrar o produto, você pode tratar como erro ou apenas criar
                 productService.createProduct(dataProductEntry);
             }
         }
