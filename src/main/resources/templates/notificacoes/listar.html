@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notificações de Estoque</title>
+</head>
+<body>
+<h1>Notificações de Estoque</h1>
+
+<h2>Alertas de Estoque Baixo (Entrada)</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID do Movimento</th>
+    <th>Mensagem</th>
+    <th>Data da Notificação</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="entry : ${entryData}">
+    <td th:text="${entry.movimentId}"></td>
+    <td th:text="${entry.mensager}"></td>
+    <td th:text="${entry.dateNotification}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Reabastecimento de Estoque (Saída)</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Produto Movimentado</th>
+    <th>Mensagem</th>
+    <th>Data da Notificação</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="exit : ${exitData}">
+    <td th:text="${exit.nameMovimentProduct}"></td>
+    <td th:text="${exit.mensager}"></td>
+    <td th:text="${exit.dateNotification}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<h3>Formulário de Estoque</h3>
+<div th:replace="~{notificacoes/form :: estoqueForm}"></div>
+
+</body>
+</html>
