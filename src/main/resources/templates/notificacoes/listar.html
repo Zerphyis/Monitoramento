@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,7 @@
   <title>Notificações de Estoque</title>
 </head>
 <body>
+
 <h1>Notificações de Estoque</h1>
 
 <h2>Alertas de Estoque Baixo (Entrada)</h2>
@@ -21,7 +22,7 @@
   <tbody>
   <tr th:each="entry : ${entryData}">
     <td th:text="${entry.movimentId}"></td>
-    <td th:text="${entry.mensager}"></td>
+    <td th:text="${entry.mensage}"></td>
     <td th:text="${entry.dateNotification}"></td>
   </tr>
   </tbody>
@@ -38,15 +39,15 @@
   </thead>
   <tbody>
   <tr th:each="exit : ${exitData}">
-    <td th:text="${exit.nameMovimentProduct}"></td>
-    <td th:text="${exit.mensager}"></td>
+    <td th:text="${exit.productName}"></td>
+    <td th:text="${exit.mensage}"></td>
     <td th:text="${exit.dateNotification}"></td>
   </tr>
   </tbody>
 </table>
 
 <h3>Formulário de Estoque</h3>
-<div th:replace="~{notificacoes/form :: estoqueForm}"></div>
+<div th:replace="notificacoes/form :: estoqueForm"></div>
 
 </body>
 </html>
