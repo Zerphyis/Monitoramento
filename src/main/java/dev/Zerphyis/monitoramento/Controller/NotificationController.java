@@ -7,9 +7,7 @@ import dev.Zerphyis.monitoramento.Service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,7 +23,7 @@ public class NotificationController {
         List<Notification> notifications = notificationService.listAllNotifications();
 
         List<NotificationDataEntry> entryData = notifications.stream()
-                .filter(notification -> notification.getMensage() != null)
+                .filter(notification -> notification.getMoviment() != null)
                 .map(notification -> new NotificationDataEntry(
                         notification.getMoviment().getId(),
                         notification.getMensage(),
@@ -34,7 +32,8 @@ public class NotificationController {
                 .collect(Collectors.toList());
 
         List<NotificationDataExit> exitData = notifications.stream()
-                .filter(notification -> notification.getMoviment().getProduct() != null)
+                .filter(notification -> notification.getMoviment() != null
+                        && notification.getMoviment().getProduct() != null)
                 .map(notification -> new NotificationDataExit(
                         notification.getMoviment().getProduct().getName(),
                         notification.getMensage(),
@@ -48,15 +47,21 @@ public class NotificationController {
         return "notificacoes/listar";
     }
 
-    @GetMapping("/alerta-estoque")
-    public String checkStockAndNotify(@RequestParam("movimentId") Long movimentId) {
+    @GetMapping("/estoque-alerta")
+    public String notifyStockAlert(@RequestParam("movimentId") Long movimentId) {
         notificationService.checkStockAndNotify(movimentId);
         return "redirect:/notificacoes/listar";
     }
 
-    @GetMapping("/alerta-abastecimento")
-    public String checkStockReplenishment(@RequestParam("movimentId") Long movimentId) {
+    @GetMapping("/abastecimento-alerta")
+    public String notifyStockReplenishment(@RequestParam("movimentId") Long movimentId) {
         notificationService.checkStockReplenishment(movimentId);
+        return "redirect:/notificacoes/listar";
+    }
+
+    @PostMapping("/deletar/{id}")
+    public String deleteNotification(@PathVariable("id") Long id) {
+        notificationService.deleteNotification(id);
         return "redirect:/notificacoes/listar";
     }
 }
