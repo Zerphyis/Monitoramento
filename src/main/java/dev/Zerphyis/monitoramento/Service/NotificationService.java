@@ -42,6 +42,9 @@ public class NotificationService {
         Product product = moviment.getProduct();
         Integer updatedQuantity = product.getQuantity() - moviment.getAmounts();
 
+        product.setQuantity(updatedQuantity);
+        productRepository.save(product);
+
         if (updatedQuantity <= product.getStockAlert()) {
             Notification notification = new Notification();
             notification.setMoviment(moviment);
@@ -58,6 +61,9 @@ public class NotificationService {
 
         Product product = moviment.getProduct();
         Integer updatedQuantity = product.getQuantity() + moviment.getAmounts();
+
+        product.setQuantity(updatedQuantity);
+        productRepository.save(product);
 
         if (updatedQuantity > product.getStockAlert()) {
             Notification notification = new Notification();
