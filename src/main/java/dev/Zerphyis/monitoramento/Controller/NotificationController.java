@@ -49,14 +49,15 @@ public class NotificationController {
     }
 
     @GetMapping("/alerta-estoque")
-    public String checkStockAndNotify(@RequestParam Long movimentId) {
+    public String checkStockAndNotify(@RequestParam("movimentId") Long movimentId) {
         notificationService.checkStockAndNotify(movimentId);
         return "redirect:/notificacoes/listar";
     }
 
     @GetMapping("/alerta-abastecimento")
-    public String checkStockReplenishment(@RequestParam Long movimentId) {
+    public String checkStockReplenishment(@RequestParam("movimentId") Long movimentId) {
         notificationService.checkStockReplenishment(movimentId);
         return "redirect:/notificacoes/listar";
     }
 }
+
