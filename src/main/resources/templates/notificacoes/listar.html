@@ -17,6 +17,7 @@
     <th>ID do Movimento</th>
     <th>Mensagem</th>
     <th>Data da Notificação</th>
+    <th>Ações</th>
   </tr>
   </thead>
   <tbody>
@@ -24,6 +25,11 @@
     <td th:text="${entry.movimentId}"></td>
     <td th:text="${entry.mensage}"></td>
     <td th:text="${entry.dateNotification}"></td>
+    <td>
+      <form th:action="@{/notificacoes/deletar/{id}(id=${entry.notificationId})}" method="post">
+        <button type="submit">Excluir</button>
+      </form>
+    </td>
   </tr>
   </tbody>
 </table>
@@ -35,6 +41,7 @@
     <th>Produto Movimentado</th>
     <th>Mensagem</th>
     <th>Data da Notificação</th>
+    <th>Ações</th>
   </tr>
   </thead>
   <tbody>
@@ -42,6 +49,11 @@
     <td th:text="${exit.productName}"></td>
     <td th:text="${exit.mensage}"></td>
     <td th:text="${exit.dateNotification}"></td>
+    <td>
+      <form th:action="@{/notificacoes/deletar/{id}(id=${exit.notificationId})}" method="post">
+        <button type="submit">Excluir</button>
+      </form>
+    </td>
   </tr>
   </tbody>
 </table>
