@@ -35,6 +35,7 @@ public class NotificationController {
                 .filter(notification -> notification.getMoviment() != null
                         && notification.getMoviment().getProduct() != null)
                 .map(notification -> new NotificationDataExit(
+                        notification.getMoviment().getId(),
                         notification.getMoviment().getProduct().getName(),
                         notification.getMensage(),
                         notification.getDateNotification()
