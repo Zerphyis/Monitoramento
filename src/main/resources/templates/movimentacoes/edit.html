@@ -9,9 +9,9 @@
 <form th:action="@{/movimentacoes/editar/{id}(id=${movimentacao.id})}" method="post">
   <label for="productId">Produto:</label>
   <select name="productId" id="productId">
-    <option th:each="produto : ${produtos}"
-            th:value="${produto.id}"
-            th:text="${produto.name}">
+    <option th:each="movimentacao : ${produtos}"
+            th:value="${movimentacao.product.id}"
+            th:text="${movimentacao.product.name}">
     </option>
   </select>
 
