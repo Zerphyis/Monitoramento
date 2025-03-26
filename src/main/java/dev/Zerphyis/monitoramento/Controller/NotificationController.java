@@ -19,32 +19,9 @@ public class NotificationController {
     private NotificationService notificationService;
 
     @GetMapping("/listar")
-    public String getNotifications(Model model) {
-        List<Notification> notifications = notificationService.listAllNotifications();
-
-        List<NotificationDataEntry> entryData = notifications.stream()
-                .filter(notification -> notification.getMoviment() != null)
-                .map(notification -> new NotificationDataEntry(
-                        notification.getMoviment().getId(),
-                        notification.getMensage(),
-                        notification.getDateNotification()
-                ))
-                .collect(Collectors.toList());
-
-        List<NotificationDataExit> exitData = notifications.stream()
-                .filter(notification -> notification.getMoviment() != null
-                        && notification.getMoviment().getProduct() != null)
-                .map(notification -> new NotificationDataExit(
-                        notification.getMoviment().getId(),
-                        notification.getMoviment().getProduct().getName(),
-                        notification.getMensage(),
-                        notification.getDateNotification()
-                ))
-                .collect(Collectors.toList());
-
-        model.addAttribute("entryData", entryData);
-        model.addAttribute("exitData", exitData);
-
+    public String listarNotificacoes(Model model) {
+        List<Notification> notificacoes = notificationService.listAllNotifications();
+        model.addAttribute("notificacoes", notificacoes);  // Corrigido para "notificacoes"
         return "notificacoes/listar";
     }
 
