@@ -34,7 +34,7 @@ form {
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza todos os itens dentro do formulário */
+  align-items: center;
 }
 
 label {
