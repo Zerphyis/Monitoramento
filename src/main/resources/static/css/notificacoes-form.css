@@ -1,0 +1,102 @@
+:root {
+  --cor-principal: #8f8090;
+  --cor-secundaria: #faf6d0;
+  --cor-fundo: #c7d8ab;
+  --cor-botao: #e2ddd9;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  padding: 20px;
+}
+
+h2 {
+  color: var(--cor-principal);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  max-width: 900px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: var(--cor-principal);
+  color: white;
+}
+
+td {
+  background-color: white;
+}
+
+td form button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+td form button:hover {
+  background-color: #c82333;
+}
+
+a {
+  color: var(--cor-principal);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid var(--cor-principal);
+  border-radius: 5px;
+  background-color: var(--cor-secundaria);
+  margin-top: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+a:hover {
+  background-color: var(--cor-principal);
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--cor-principal);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: var(--cor-botao);
+}
+
+.container > * {
+  width: 100%;
+  text-align: center;
+}
