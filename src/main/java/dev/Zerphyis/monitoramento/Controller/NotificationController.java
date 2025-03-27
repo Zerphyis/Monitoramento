@@ -1,7 +1,5 @@
 package dev.Zerphyis.monitoramento.Controller;
 
-import dev.Zerphyis.monitoramento.Entity.Data.Notification.NotificationDataEntry;
-import dev.Zerphyis.monitoramento.Entity.Data.Notification.NotificationDataExit;
 import dev.Zerphyis.monitoramento.Entity.Notification.Notification;
 import dev.Zerphyis.monitoramento.Service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/notificacoes")
@@ -21,17 +18,22 @@ public class NotificationController {
     @GetMapping("/listar")
     public String listarNotificacoes(Model model) {
         List<Notification> notificacoes = notificationService.listAllNotifications();
-        model.addAttribute("notificacoes", notificacoes);  // Corrigido para "notificacoes"
+        model.addAttribute("notificacoes", notificacoes);
         return "notificacoes/listar";
     }
 
-    @GetMapping("/estoque-alerta")
+    @GetMapping("/formulario")
+    public String exibirFormulario() {
+        return "notificacoes/form";
+    }
+
+    @GetMapping("/alerta-estoque")
     public String notifyStockAlert(@RequestParam("movimentId") Long movimentId) {
         notificationService.checkStockAndNotify(movimentId);
         return "redirect:/notificacoes/listar";
     }
 
-    @GetMapping("/abastecimento-alerta")
+    @GetMapping("/alerta-abastecimento")
     public String notifyStockReplenishment(@RequestParam("movimentId") Long movimentId) {
         notificationService.checkStockReplenishment(movimentId);
         return "redirect:/notificacoes/listar";
