@@ -3,9 +3,6 @@ package dev.Zerphyis.monitoramento.Entity.Notification;
 import dev.Zerphyis.monitoramento.Entity.MovimentStock.MovimentStock;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notificacoes")
@@ -21,13 +18,10 @@ public class Notification {
     @NotBlank
     private String mensage;
 
-    @NotNull
-    private LocalDateTime dateNotification;
 
     public Notification(MovimentStock moviment, String mensage) {
         this.moviment = moviment;
         this.mensage = mensage;
-        this.dateNotification = LocalDateTime.now();
     }
 
     public Notification() {
@@ -56,13 +50,5 @@ public class Notification {
 
     public void setMensage(String mensage) {
         this.mensage = mensage;
-    }
-
-    public LocalDateTime getDateNotification() {
-        return dateNotification;
-    }
-
-    public void setDateNotification(LocalDateTime dateNotification) {
-        this.dateNotification = dateNotification;
     }
 }
