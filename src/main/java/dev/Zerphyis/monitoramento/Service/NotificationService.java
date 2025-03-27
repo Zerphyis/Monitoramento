@@ -9,7 +9,6 @@ import dev.Zerphyis.monitoramento.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,7 +27,9 @@ public class NotificationService {
     }
 
     public List<Notification> listAllNotifications() {
-        return notificationRepository.findAll();
+        List<Notification> notifications = notificationRepository.findAll();
+        System.out.println("Notificações encontradas: " + notifications.size());
+        return notifications;
     }
 
     public void deleteNotification(Long id) {
@@ -49,8 +50,6 @@ public class NotificationService {
             Notification notification = new Notification();
             notification.setMoviment(moviment);
             notification.setMensage("Atenção: O estoque de " + product.getName() + " atingiu o nível de alerta!");
-            notification.setDateNotification(LocalDateTime.now());
-
             saveNotification(notification);
         }
     }
@@ -69,7 +68,6 @@ public class NotificationService {
             Notification notification = new Notification();
             notification.setMoviment(moviment);
             notification.setMensage("O estoque de " + product.getName() + " foi reabastecido!");
-            notification.setDateNotification(LocalDateTime.now());
 
             saveNotification(notification);
         }
